@@ -1,0 +1,23 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "server debugger", // name of debug on the list debugs
+            "program": "${workspaceFolder}/src/server.ts", // change fileName to the file do you want debug
+            "preLaunchTask": "tsc: build - tsconfig.json",
+            "outFiles": ["${workspaceFolder}/lib/**/*.js","${workspaceFolder}/lib/**/*.js.map"]
+        },
+    ]
+}
+
+
+/* important:
+ * the file's path you want debug have to exist on include Array on tsconfig.json file (the root path "./")
+ * rootDir property on tsconfig.json have to be defult path ('.')
+ * add/edit property sourceMap on tsconfig.json to true value
+ */
