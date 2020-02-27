@@ -21,7 +21,7 @@
  
          "host": [ "ec2-35-178-231-38.eu-west-2.compute.amazonaws.com"],
         // Branch
-        "ref": "origin/daniellevy133/Broadcast-schedule.git",
+        "ref": "origin/master",
         // Git repository to clone
         "repo": "git@github.com:daniellevy133/Broadcast-schedule.git",
         // Path of the application on target servers
