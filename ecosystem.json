@@ -31,6 +31,7 @@
         // is no separate command-line flag, see 'man ssh'
         // can be either a single string or an array of strings
         "ssh_options": "StrictHostKeyChecking=no",
+        "pre-deploy": "git reset --hard",
         // Commands to be executed on the server after the repo has been cloned
         "post-deploy": "npm install && npm build && pm2 startOrRestart ecosystem.json && pm2 save",
         // Environment variables that must be injected in all applications on this env
