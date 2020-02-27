@@ -1,4 +1,4 @@
-import {TVShowModel,TVShowDocument} from '../../db/models/tvshow.model';
+import {TVShowModel,TVShowDocument,TVShowMethods} from '../../db/models/tvshow.model';
 import {ChannelModel,ChannelDocument} from '../../db/models/channel.model';
 import {MongooseQuery} from '../models/query/mongoose.query'
 import ISchema from '../../generics/baseInterface.interface';

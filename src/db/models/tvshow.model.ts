@@ -10,7 +10,7 @@ export interface TVShowDocument extends ISchema
     hosts:[string]
    };
 
-   class TVShowMethods {
+export class TVShowMethods {
     /**
      * print this doc _id.
      */
