@@ -22,7 +22,7 @@
         "host": [         "35.178.231.38"
         ],
         // Branch
-        "ref": "origin/https://github.com/daniellevy133/Broadcast-schedule.git",
+        "ref": "https://github.com/daniellevy133/Broadcast-schedule.git",
         // Git repository to clone
         "repo": "git@github.com:daniellevy133/Broadcast-schedule.git",
         // Path of the application on target servers
