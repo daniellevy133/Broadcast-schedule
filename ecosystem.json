@@ -23,7 +23,7 @@
         // Branch
         "ref": "origin/master",
         // Git repository to clone
-        "repo": "git@github.com:daniellevy133/Broadcast-schedule.git",
+        "repo": "https://github.com/daniellevy133/Broadcast-schedule.git",
         // Path of the application on target servers
         "path": "/home/ubuntu/broadcastSchedule",
         // Can be used to give options in the format used in the configura-
