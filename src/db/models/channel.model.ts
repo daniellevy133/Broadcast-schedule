@@ -15,7 +15,7 @@ export interface ChannelDocument extends ISchema
   ]
    };
 
-   class ChannelMethods {
+  export class ChannelMethods {
     /**
      * print this doc _id.
      */

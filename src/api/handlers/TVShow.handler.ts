@@ -1,5 +1,5 @@
 import {TVShowModel,TVShowDocument,TVShowMethods} from '../../db/models/tvshow.model';
-import {ChannelModel,ChannelDocument} from '../../db/models/channel.model';
+import {ChannelModel,ChannelDocument,ChannelMethods} from '../../db/models/channel.model';
 import {MongooseQuery} from '../models/query/mongoose.query'
 import ISchema from '../../generics/baseInterface.interface';
 
@@ -8,6 +8,7 @@ class TVShowrHandler {
 
     async findTVShowById(_id:ISchema){
         TVShowMethods;
+        ChannelMethods;
         try{
             const TVShow = await TVShowModel.findById(_id).populate('channels','name').exec();
             return TVShow;
