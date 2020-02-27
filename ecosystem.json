@@ -19,8 +19,7 @@
         "user": "ubuntu",// default on AWS, may change
         // Multi host is possible, just by passing IPs/hostname as an array
  
-        "host": [         "35.178.231.38"
-        ],
+         "host": [ "ec2-35-178-231-38.eu-west-2.compute.amazonaws.com"],
         // Branch
         "ref": "origin/daniellevy133/Broadcast-schedule.git",
         // Git repository to clone
@@ -35,9 +34,9 @@
         // Commands to be executed on the server after the repo has been cloned
         "post-deploy": "npm install && npm build && pm2 startOrRestart ecosystem.json && pm2 save",
         // Environment variables that must be injected in all applications on this env
-        "env": {
+        // "env": {
        //   "NODE_ENV": "{{env}}"
-        }
+       // }
       }
     }
   }
