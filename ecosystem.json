@@ -3,7 +3,7 @@
     "apps": [
       {
         "name": "Broadcast_schedule_test_2",// this is the name of the process you will see when running pm2 list
-        "script": "./bil/server.js",
+        "script": "./lib/server.js",
         // Environment variables injected when starting with --env production
         // http://pm2.keymetrics.io/docs/usage/application-declaration/#switching-to-different-environments
         "env": {
