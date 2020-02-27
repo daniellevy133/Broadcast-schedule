@@ -7,6 +7,7 @@ import ISchema from '../../generics/baseInterface.interface';
 class TVShowrHandler {
 
     async findTVShowById(_id:ISchema){
+        TVShowMethods;
         try{
             const TVShow = await TVShowModel.findById(_id).populate('channels','name').exec();
             return TVShow;
