@@ -10,7 +10,7 @@
            "NODE_ENV": "development"
         }
       }
-    ],
+    ],  
     // Deployment part
     // Here you describe each environment
     "deploy": {

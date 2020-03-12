@@ -54,7 +54,6 @@ abstract class CrudController {
 
 	async update(request: Request, response: Response, next: NextFunction) {
 		const itemData: ISchema = request.body;
-		console.log(itemData);
 		try {
 			const updated = await this.t.findOneAndUpdate({ _id: itemData._id }, { $set: itemData }).lean().exec();
 			response.send(updated)

@@ -1,7 +1,8 @@
 import { Router} from 'express';
 //import V1Routes from './v1/v1.routes';
 import TVShowController from './controllers/TVShows.controller';
-import ChannelController from './controllers/Channel.controller'
+import ChannelController from './controllers/Channel.controller';
+
 
 
 class ApiRoutes {

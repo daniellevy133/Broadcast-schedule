@@ -2,9 +2,16 @@ import {TVShowModel,TVShowDocument,TVShowMethods} from '../../db/models/tvshow.m
 import {ChannelModel,ChannelDocument,ChannelMethods} from '../../db/models/channel.model';
 import {MongooseQuery} from '../models/query/mongoose.query'
 import ISchema from '../../generics/baseInterface.interface';
-
+import DateObject from '../../generics/date_object/interface/date.object'
+import Creator from '../../generics/creator';
 
 class TVShowrHandler {
+
+    private date:DateObject;
+
+    constructor(){
+        this.date = Creator.createDateObject('dateMoment');
+    }
 
     async findTVShowById(_id:ISchema){
         TVShowMethods;
@@ -99,17 +106,21 @@ class TVShowrHandler {
         }
     }
 
-    async editChannelToTVShow(channelId:ISchema,tvshowId:ISchema,rangeDates:Date[]){
+    async editChannelToTVShow(channelId:ISchema,tvshowId:ISchema,rangeDates:string[]){
+        const datesRange:Date[]=[
+            this.date.createDate(rangeDates[0],rangeDates[2]),
+            this.date.createDate(rangeDates[1],rangeDates[2])
+        ];
         try{
-            if(await this.checkAvilability(channelId,rangeDates)){
+            if(await this.checkAvilability(channelId,datesRange)){
                 const editTVShow = TVShowModel.findById(tvshowId).exec();
                 const editChannel = ChannelModel.findById(channelId).exec();
                 const results = await Promise.all([editTVShow,editChannel]);
                 if(!results[0]?.channels.includes(channelId._id)){
                     results[0]?.channels.push(channelId._id);
                 }
-                results[1]?.TVShows.push({TVShowId:tvshowId._id ,startTime:rangeDates[0],endTime:rangeDates[1]});
-                results[1]?.TVShows.sort((show1,show2)=> show1.startTime.getTime()-show2.startTime.getTime());
+                results[1]?.TVShows.push({TVShowId:tvshowId._id ,startTime:datesRange[0],endTime:datesRange[1]});
+                results[1]?.TVShows.sort((show1,show2)=> this.date.isSameOrBefore(show1.startTime,show2.startTime));
                 const editAll = await Promise.all([TVShowModel.findByIdAndUpdate(tvshowId._id,results[0]).exec(),
                            ChannelModel.findByIdAndUpdate(channelId,results[1]).exec()]);
                 return editAll;
@@ -202,7 +213,7 @@ class TVShowrHandler {
         ];
         try{
             const Channels:ChannelDocument[] = await ChannelModel.aggregate(pipeline).exec();
-            return (Channels.length === 0 || Channels[0].TVShows[0].startTime.getTime()>=rangeDates[1].getTime())
+            return (Channels.length === 0 || this.date.isSameOrBefore(rangeDates[1],Channels[0].TVShows[0].startTime))
         }catch(error){
             throw new Error(error);
         }

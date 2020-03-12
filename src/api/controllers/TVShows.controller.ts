@@ -8,6 +8,8 @@ import ISchema from '../../generics/baseInterface.interface';
 import { Types } from 'mongoose';
 
 
+
+
 class TVShowController extends CrudController{
 
     private handler:TVShowrHandler;
@@ -46,7 +48,6 @@ class TVShowController extends CrudController{
         try{
             const items = await this.handler.search(tvShowQuery.mongooseQueryCreator());
             return response.send(items);
-            request;
         }catch(error){
             next(error);
         }
@@ -71,9 +72,10 @@ class TVShowController extends CrudController{
         const tvshowId:ISchema = {
             _id:Types.ObjectId(request.query.tvshowId)
         }
-        const rangeDates:Date[]=[];
-        rangeDates.push(new Date(request.body.startTime));
-        rangeDates.push(new Date(request.body.endTime));
+        const rangeDates:any[] = [];
+        rangeDates.push(request.body.startTime);
+        rangeDates.push(request.body.endTime);
+        rangeDates.push(request.body.format);
         try{
             const addTVShowToChannel =await this.handler.editChannelToTVShow(channelId,tvshowId,rangeDates);
             return response.send(addTVShowToChannel)

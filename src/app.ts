@@ -5,7 +5,6 @@ import * as bodyParser from 'body-parser';
 // import * as logger from 'morgan';
 // import * as cors from 'cors';
 //import * as mongoose from 'mongoose';
-
 import ApiRoutes from './api/routes';
 //import errorMiddleware from './middleware/error.middleware';
 
