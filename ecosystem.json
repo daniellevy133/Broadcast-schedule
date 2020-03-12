@@ -10,7 +10,12 @@
            "NODE_ENV": "development"
         }
       }
+<<<<<<< HEAD
     ],  
+=======
+    ],
+    
+>>>>>>> 8a2b638413714d4abc4af0709b4b82ccc35eb770
     // Deployment part
     // Here you describe each environment
     "deploy": {
